@@ -8,8 +8,8 @@ class Face:
         pygame.init() 
         self.screen_lay = screen
         self.screen  = pygame.display.set_mode( self.screen_lay)
-
-
+        self.clock = pygame.time.Clock()
+        
         # Define colors
         self.WHITE = (255, 255, 255)
         self.BLACK = (0, 0, 0)
@@ -25,6 +25,8 @@ class Face:
         # Define mouth parameters
         self.mouth_rect = pygame.Rect(150, 270, 100, 50)
         self.mouth_width = 3
+        self.mth= True
+
     
     def draw_smiling_mouth(self, open=False):
         if open:
@@ -145,14 +147,18 @@ class Face:
         if act == "talk":
         #talk()
             self.draw_smiling_mouth(mouth_open)
+            #self.talk2()
         elif act == "neutral":
             self.draw_neutral_mouth(mouth_open)
         elif act  == "excited":
             self.draw_excited_mouth(mouth_open)
         else:  # neutral
             self.draw_neutral_mouth(mouth_open)
-   
         pygame.display.flip()
+    def talk2(self):
+        self.draw_face(act="talk",expression="talk", eyes_open=True, look_direction="center",mouth_open=self.mth)
+        self.mth = not self.mth
+        time.sleep(0.3)
     def test(self) : 
         run = True
         while run : 
@@ -160,6 +166,29 @@ class Face:
                 if event.type  == pygame.QUIT:
                     run= False
             self.draw_face(act="neutral",expression="talk", eyes_open=True, look_direction="center",mouth_open=True)
+        pygame.quit()
+    def test2(self):
+        run = True
+        is_talking = False
+        while run:
+            for event in pygame.event.get():
+                if event.type == pygame.QUIT:
+                    run = False
+                elif event.type == pygame.KEYDOWN:
+                    print('t')
+                    if event.key == pygame.K_t:
+                        is_talking = not is_talking  # Toggle talking on/off with 't' key
+
+            if is_talking:
+                self.talk2() 
+               #self.clock.tick(0.3)
+            else :
+                self.draw_face(act="neutral",expression="talk", eyes_open=True, look_direction="center",mouth_open=True)
+
+
+
+
 if __name__ == '__main__':
     f= Face((400,400))
-    f.test()
+    f.test2()
+    
