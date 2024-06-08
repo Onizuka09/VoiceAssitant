@@ -2,108 +2,160 @@
   "intents": [
     {
       "tag": "greeting",
-      "patterns": ["Hi", "Hello", "Hey"],
-      "responses": ["Hello!", "Hi there! How can I help you today?"],
+      "patterns": ["Salut", "Bonjour", "Hey"],
+      "responses": ["Bonjour !", "Salut ! Comment puis-je vous aider aujourd'hui ?"],
       "context_set": "greeting"
     },
     {
       "tag": "tunisia_location",
-      "patterns": ["Where is Tunisia located?", "What is the location of Tunisia?", "In which country is Tunisia?"],
+      "patterns": ["Où se trouve la Tunisie ?", "Quelle est la localisation de la Tunisie ?", "Dans quel pays se trouve la Tunisie ?"],
       "responses": [
-        "Tunisia is located in North Africa, bordered by Algeria to the west, Libya to the southeast, and the Mediterranean Sea to the north and east.",
-        "Tunisia is situated on the northernmost tip of Africa, with a coastline along the Mediterranean Sea."
+        "La Tunisie est située en Afrique du Nord, bordée par l'Algérie à l'ouest, la Libye au sud-est et la mer Méditerranée au nord et à l'est.",
+        "La Tunisie est située à l'extrémité nord de l'Afrique, avec une côte le long de la mer Méditerranée."
       ],
       "context_set": "asked_about_tunisia"
     },
     {
       "tag": "ask_about_tunisia",
-      "patterns": ["Tell me about Tunisia", "What is Tunisia like?", "Can you tell me about Tunisian culture?"],
+      "patterns": ["Parlez-moi de la Tunisie", "Comment est la Tunisie ?", "Pouvez-vous me parler de la culture tunisienne ?"],
       "responses": [
-        "Tunisia is known for its rich history, beautiful beaches, and diverse culture.",
-        "Tunisian culture is a blend of Arab, Berber, French, and Ottoman influences."
+        "La Tunisie est connue pour son histoire riche, ses belles plages et sa culture diversifiée.",
+        "La culture tunisienne est un mélange d'influences arabes, berbères, françaises et ottomanes."
       ],
       "context_set": "asked_about_tunisia"
     },
     {
       "tag": "tunisian_food",
-      "patterns": ["What is Tunisian food like?", "Tell me about Tunisian cuisine", "What do people eat in Tunisia?"],
+      "patterns": ["Comment est la cuisine tunisienne ?", "Parlez-moi de la cuisine tunisienne", "Que mangent les gens en Tunisie ?"],
       "responses": [
-        "Tunisian cuisine is famous for dishes like couscous, brik, and harissa.",
-        "Popular Tunisian dishes include shakshouka, merguez sausage, and lablabi."
+        "La cuisine tunisienne est célèbre pour des plats comme le couscous, le brik et la harissa.",
+        "Les plats tunisiens populaires incluent la chakchouka, la merguez et le lablabi."
       ],
       "context_filter": "asked_about_tunisia",
       "context_set": "tunisian_food"
     },
     {
       "tag": "tunisian_music",
-      "patterns": ["Tell me about Tunisian music", "What music is popular in Tunisia?", "What kind of music do Tunisians listen to?"],
+      "patterns": ["Parlez-moi de la musique tunisienne", "Quelle musique est populaire en Tunisie ?", "Quel genre de musique écoutent les Tunisiens ?"],
       "responses": [
-        "Tunisian music includes genres like Malouf, which has Andalusian roots.",
-        "Popular music in Tunisia also includes modern pop and rai."
+        "La musique tunisienne comprend des genres comme le Malouf, qui a des racines andalouses.",
+        "La musique populaire en Tunisie inclut également la pop moderne et le raï."
       ],
       "context_filter": "asked_about_tunisia",
-      "context_set":"tunisian_music"
+      "context_set": "tunisian_music"
     },
     {
       "tag": "tunisian_festivals",
-      "patterns": ["Are there any festivals in Tunisia?", "Tell me about Tunisian festivals", "What festivals do Tunisians celebrate?"],
+      "patterns": ["Y a-t-il des festivals en Tunisie ?", "Parlez-moi des festivals tunisiens", "Quels festivals célèbrent les Tunisiens ?"],
       "responses": [
-        "Popular festivals in Tunisia include the Carthage International Festival and the Sahara Festival in Douz.",
-        "Tunisians also celebrate traditional holidays like Eid al-Fitr and Eid al-Adha."
+        "Les festivals populaires en Tunisie incluent le Festival International de Carthage et le Festival du Sahara à Douz.",
+        "Les Tunisiens célèbrent également des fêtes traditionnelles comme l'Aïd el-Fitr et l'Aïd el-Adha."
       ],
       "context_filter": "asked_about_tunisia",
-      "context_set":"tunisian_festivals"
+      "context_set": "tunisian_festivals"
     },
     {
       "tag": "follow_up_food",
-      "patterns": ["Tell me more about Tunisian dishes", "What are some traditional Tunisian foods?"],
+      "patterns": ["Parlez-moi plus des plats tunisiens", "Quels sont les plats traditionnels tunisiens ?"],
       "responses": [
-        "In addition to couscous and brik, Tunisian cuisine features specialties like tagine, kefteji, and makroud.",
-        "Don't miss trying Tunisian street food like fricassée and maqluba during your visit!"
+        "En plus du couscous et du brik, la cuisine tunisienne propose des spécialités comme le tajine, le kefteji et le makroud.",
+        "Ne manquez pas d'essayer la street food tunisienne comme le fricassée et le maqluba lors de votre visite !"
       ],
       "context_filter": "tunisian_food",
-      "context_set":"asked_about_tunisia"
+      "context_set": "asked_about_tunisia"
     },
     {
       "tag": "follow_up_music",
-      "patterns": ["Tell me more about Tunisian music", "Can you recommend some Tunisian music artists?", "What are popular Tunisian songs?"],
+      "patterns": ["Parlez-moi plus de la musique tunisienne", "Pouvez-vous recommander des artistes de musique tunisienne ?", "Quelles sont les chansons tunisiennes populaires ?"],
       "responses": [
-        "Some renowned Tunisian music artists include Emel Mathlouthi, Saber Rebaï, and Lotfi Bouchnak.",
-        "Popular Tunisian songs include 'Kelmti Horra' by Emel Mathlouthi and 'Sidi Mansour' by Saber Rebaï."
+        "Parmi les artistes de musique tunisienne renommés, on trouve Emel Mathlouthi, Saber Rebaï et Lotfi Bouchnak.",
+        "Les chansons tunisiennes populaires incluent 'Kelmti Horra' par Emel Mathlouthi et 'Sidi Mansour' par Saber Rebaï."
       ],
       "context_filter": "tunisian_music",
-      "context_set":"asked_about_tunisia"
+      "context_set": "asked_about_tunisia"
     },
     {
       "tag": "follow_up_festivals",
-      "patterns": ["tell me more about tunisian festivals", "What are the dates for the Carthage International Festival?", "Can you provide more details about the Sahara Festival in Douz?"],
+      "patterns": ["Parlez-moi plus des festivals tunisiens", "Quelles sont les dates du Festival International de Carthage ?", "Pouvez-vous donner plus de détails sur le Festival du Sahara à Douz ?"],
       "responses": [
-        "The Carthage International Festival usually takes place in July and August, featuring a variety of music, theater, and dance performances.",
-        "The Sahara Festival in Douz is a cultural celebration of Bedouin traditions and desert heritage, held annually in December."
+        "Le Festival International de Carthage a généralement lieu en juillet et août, avec une variété de spectacles de musique, de théâtre et de danse.",
+        "Le Festival du Sahara à Douz est une célébration culturelle des traditions bédouines et du patrimoine désertique, qui se tient chaque année en décembre."
       ],
       "context_filter": "tunisian_festivals",
-    "context_set":"asked_about_tunisia"
+      "context_set": "asked_about_tunisia"
     },
     {
       "tag": "switch_topic",
-      "patterns": ["Tell me something else", "I'm curious about something else", "what else"],
-      "responses": ["Sure! What are you intrested in ?"],
+      "patterns": ["Parlez-moi d'autre chose", "Je suis curieux d'autre chose", "Quoi d'autre"],
+      "responses": ["Bien sûr ! Qu'est-ce qui vous intéresse ?"],
       "context_set": ""
     },
     {
       "tag": "default_response",
       "patterns": [],
-      "responses": ["I don't understand. Can you please rephrase?"],
+      "responses": ["Je ne comprends pas. Pouvez-vous reformuler ?"],
       "context_set": "out_of_context"
     },
     {
       "tag": "follow_up_food_ingredients",
-      "patterns": ["What are the main ingredients used in Tunisian dishes?", "Can you tell me more about Tunisian spices?"],
-      "responses": ["Tunisian cuisine often incorporates ingredients like olive oil, cumin, coriander, and harissa.",
-                    "Spices like cinnamon, saffron, and mint are commonly used in Tunisian cooking."],
+      "patterns": ["Quels sont les principaux ingrédients utilisés dans les plats tunisiens ?", "Pouvez-vous me parler des épices tunisiennes ?"],
+      "responses": ["La cuisine tunisienne incorpore souvent des ingrédients comme l'huile d'olive, le cumin, la coriandre et la harissa.",
+                    "Les épices comme la cannelle, le safran et la menthe sont couramment utilisées dans la cuisine tunisienne."],
       "context_filter": "tunisian_food",
-      "context_set":"asked_about_tunisia"
+      "context_set": "asked_about_tunisia"
+    },
+    {
+      "tag": "cite_des_sciences_presentation",
+      "patterns": ["Parlez-moi de la Cité des Sciences à Tunis", "Qu'est-ce que la Cité des Sciences ?", "Pouvez-vous décrire la Cité des Sciences à Tunis ?"],
+      "responses": [
+        "La Cité des Sciences à Tunis est un centre scientifique et culturel majeur conçu pour promouvoir la connaissance et l'intérêt pour les sciences auprès du grand public. Située à Tunis, la capitale de la Tunisie, elle offre une diversité d'espaces éducatifs et d'activités."
+      ],
+      "context_set": "asked_about_cite_des_sciences"
+    },
+    {
+      "tag": "cite_des_sciences_activities",
+      "patterns": ["Quelles sont les principales activités à la Cité des Sciences ?", "Parlez-moi des activités à la Cité des Sciences à Tunis"],
+      "responses": [
+        "Les principales activités à la Cité des Sciences à Tunis incluent des espaces d'exposition, une médiathèque, un centre de congrès et un pavillon pour les expositions temporaires."
+      ],
+      "context_filter": "asked_about_cite_des_sciences",
+      "context_set": "cite_des_sciences_activities"
+    },
+    {
+      "tag": "cite_des_sciences_exhibition_spaces",
+      "patterns": ["Parlez-moi des espaces d'exposition à la Cité des Sciences", "Comment sont les espaces d'exposition à la Cité des Sciences à Tunis ?"],
+      "responses": [
+        "Les espaces d'exposition à la Cité des Sciences incluent l'espace 'L'Univers', qui présente divers objets célestes et explique le positionnement du système solaire et de la Terre, et l'espace 'La vie et l'homme', qui offre une vue globale de la vie sur Terre, son histoire, sa diversité et l'évolution humaine."
+      ],
+      "context_filter": "cite_des_sciences_activities",
+      "context_set": "cite_des_sciences_exhibition_spaces"
+    },
+    {
+      "tag": "cite_des_sciences_media_library",
+      "patterns": ["Parlez-moi de la médiathèque à la Cité des Sciences", "Quelles installations sont disponibles dans la médiathèque à la Cité des Sciences à Tunis ?"],
+      "responses": [
+        "La médiathèque vise à assurer une large diffusion de l'information scientifique auprès du public. Elle comprend une section pour enfants, une section pour le grand public et un centre d'accès à l'information avec une salle de formation en informatique, une salle de conférences et un accès gratuit à Internet."
+      ],
+      "context_filter": "cite_des_sciences_activities",
+      "context_set": "cite_des_sciences_media_library"
+    },
+    {
+      "tag": "cite_des_sciences_congress_center",
+      "patterns": ["Comment est le centre de congrès à la Cité des Sciences ?", "Parlez-moi du centre de congrès à la Cité des Sciences à Tunis"],
+      "responses": [
+        "Le centre de congrès à la Cité des Sciences est composé de deux auditoriums et de plusieurs salles de conférence conçues pour accueillir des conférences, des séminaires et des colloques, facilitant les échanges et discussions scientifiques."
+      ],
+      "context_filter": "cite_des_sciences_activities",
+      "context_set": "cite_des_sciences_congress_center"
+    },
+    {
+      "tag": "cite_des_sciences_temporary_exhibitions",
+      "patterns": ["Parlez-moi des expositions temporaires à la Cité des Sciences", "Quel genre d'expositions temporaires a lieu à la Cité des Sciences à Tunis ?"],
+      "responses": [
+        "Le pavillon pour les expositions temporaires accueille deux à trois expositions par an, comme 'Les Dinosaures du Sahara' et 'Math 21'. Il comprend également des expositions permanentes comme 'SIDA' et 'Tous Parents Tous Différents' dans la mezzanine, et des expositions extérieures illustrant les grandes étapes de l'histoire des sciences."
+      ],
+      "context_filter": "cite_des_sciences_activities",
+      "context_set": "cite_des_sciences_temporary_exhibitions"
     }
   ]
 }
-

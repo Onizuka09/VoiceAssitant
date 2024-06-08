@@ -17,9 +17,14 @@ os.environ['PYTHONWARNINGS'] = 'ignore:Warning'
 class Assistant:
    def __init__(self) -> None:
       #self.sr = speech_recognition.Recognizer()
-      self.speaker  = tts.init(driverName= 'espeak')
+      self.speaker  = tts.init()#driverName= 'espeak')
       #self.fc = Face()
-      self.speaker.setProperty("rate",150) 
+      #self.set_voice()
+      self.speaker.setProperty('voice', 'mb/mb-fr1')
+      self.speaker.setProperty('rate', 155)  # Set the speech rate
+
+
+      #self.speaker.setProperty("rate",150) 
       self.is_speaking = False 
       self.mouth_open = False
 
@@ -48,6 +53,11 @@ class Assistant:
    def onWord(self, name, location, length):
         print(f"Current word: {name}, Location: {location}, Length: {length}")
 
+   def set_voice(self): 
+        voices = self.speaker.getProperty('voices')
+        for voice in voices: 
+            if "french" in voice.name.lower():
+                print(voice)
 
    def face_anim(self): 
        pass
@@ -103,7 +113,7 @@ class Assistant:
                     recognizer.adjust_for_ambient_noise(source)
                     try:
                         audio = recognizer.listen(source, timeout=5, phrase_time_limit=10)
-                        result = recognizer.recognize_google(audio)
+                        result = recognizer.recognize_google(audio, language='fr-FR')
                         print(f"result: {result}")
                         text = result.lower()
                         if text is not None:

@@ -4,7 +4,7 @@ import nltk
 from neuralintents.assistants import BasicAssistant
 
 class CustomAssistant(BasicAssistant):
-    def __init__(self, intents_file, confidence_threshold=0.8):
+    def __init__(self, intents_file, confidence_threshold=0.6):
         super().__init__(intents_file)
         self.confidence_threshold = confidence_threshold
         self.context = None  # Initialize context

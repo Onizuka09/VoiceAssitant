@@ -1,0 +1,109 @@
+{
+  "intents": [
+    {
+      "tag": "greeting",
+      "patterns": ["Hi", "Hello", "Hey"],
+      "responses": ["Hello!", "Hi there! How can I help you today?"],
+      "context_set": "greeting"
+    },
+    {
+      "tag": "tunisia_location",
+      "patterns": ["Where is Tunisia located?", "What is the location of Tunisia?", "In which country is Tunisia?"],
+      "responses": [
+        "Tunisia is located in North Africa, bordered by Algeria to the west, Libya to the southeast, and the Mediterranean Sea to the north and east.",
+        "Tunisia is situated on the northernmost tip of Africa, with a coastline along the Mediterranean Sea."
+      ],
+      "context_set": "asked_about_tunisia"
+    },
+    {
+      "tag": "ask_about_tunisia",
+      "patterns": ["Tell me about Tunisia", "What is Tunisia like?", "Can you tell me about Tunisian culture?"],
+      "responses": [
+        "Tunisia is known for its rich history, beautiful beaches, and diverse culture.",
+        "Tunisian culture is a blend of Arab, Berber, French, and Ottoman influences."
+      ],
+      "context_set": "asked_about_tunisia"
+    },
+    {
+      "tag": "tunisian_food",
+      "patterns": ["What is Tunisian food like?", "Tell me about Tunisian cuisine", "What do people eat in Tunisia?"],
+      "responses": [
+        "Tunisian cuisine is famous for dishes like couscous, brik, and harissa.",
+        "Popular Tunisian dishes include shakshouka, merguez sausage, and lablabi."
+      ],
+      "context_filter": "asked_about_tunisia",
+      "context_set": "tunisian_food"
+    },
+    {
+      "tag": "tunisian_music",
+      "patterns": ["Tell me about Tunisian music", "What music is popular in Tunisia?", "What kind of music do Tunisians listen to?"],
+      "responses": [
+        "Tunisian music includes genres like Malouf, which has Andalusian roots.",
+        "Popular music in Tunisia also includes modern pop and rai."
+      ],
+      "context_filter": "asked_about_tunisia",
+      "context_set":"tunisian_music"
+    },
+    {
+      "tag": "tunisian_festivals",
+      "patterns": ["Are there any festivals in Tunisia?", "Tell me about Tunisian festivals", "What festivals do Tunisians celebrate?"],
+      "responses": [
+        "Popular festivals in Tunisia include the Carthage International Festival and the Sahara Festival in Douz.",
+        "Tunisians also celebrate traditional holidays like Eid al-Fitr and Eid al-Adha."
+      ],
+      "context_filter": "asked_about_tunisia",
+      "context_set":"tunisian_festivals"
+    },
+    {
+      "tag": "follow_up_food",
+      "patterns": ["Tell me more about Tunisian dishes", "What are some traditional Tunisian foods?"],
+      "responses": [
+        "In addition to couscous and brik, Tunisian cuisine features specialties like tagine, kefteji, and makroud.",
+        "Don't miss trying Tunisian street food like fricassée and maqluba during your visit!"
+      ],
+      "context_filter": "tunisian_food",
+      "context_set":"asked_about_tunisia"
+    },
+    {
+      "tag": "follow_up_music",
+      "patterns": ["Tell me more about Tunisian music", "Can you recommend some Tunisian music artists?", "What are popular Tunisian songs?"],
+      "responses": [
+        "Some renowned Tunisian music artists include Emel Mathlouthi, Saber Rebaï, and Lotfi Bouchnak.",
+        "Popular Tunisian songs include 'Kelmti Horra' by Emel Mathlouthi and 'Sidi Mansour' by Saber Rebaï."
+      ],
+      "context_filter": "tunisian_music",
+      "context_set":"asked_about_tunisia"
+    },
+    {
+      "tag": "follow_up_festivals",
+      "patterns": ["tell me more about tunisian festivals", "What are the dates for the Carthage International Festival?", "Can you provide more details about the Sahara Festival in Douz?"],
+      "responses": [
+        "The Carthage International Festival usually takes place in July and August, featuring a variety of music, theater, and dance performances.",
+        "The Sahara Festival in Douz is a cultural celebration of Bedouin traditions and desert heritage, held annually in December."
+      ],
+      "context_filter": "tunisian_festivals",
+    "context_set":"asked_about_tunisia"
+    },
+    {
+      "tag": "switch_topic",
+      "patterns": ["Tell me something else", "I'm curious about something else", "what else"],
+      "responses": ["Sure! What are you intrested in ?"],
+      "context_set": ""
+    },
+    {
+      "tag": "default_response",
+      "patterns": [],
+      "responses": ["I don't understand. Can you please rephrase?"],
+      "context_set": "out_of_context"
+    },
+    {
+      "tag": "follow_up_food_ingredients",
+      "patterns": ["What are the main ingredients used in Tunisian dishes?", "Can you tell me more about Tunisian spices?"],
+      "responses": ["Tunisian cuisine often incorporates ingredients like olive oil, cumin, coriander, and harissa.",
+                    "Spices like cinnamon, saffron, and mint are commonly used in Tunisian cooking."],
+      "context_filter": "tunisian_food",
+      "context_set":"asked_about_tunisia"
+    }
+  ]
+}
+

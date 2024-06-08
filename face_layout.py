@@ -5,7 +5,7 @@ import math
 
 class Face:
     def __init__(self, screen =(400,400)):
-        pygame.init() 
+        #pygame.init() 
         self.screen_lay = screen
         self.screen  = pygame.display.set_mode( self.screen_lay)
         self.clock = pygame.time.Clock()
