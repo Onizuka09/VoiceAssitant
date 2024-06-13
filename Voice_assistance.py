@@ -8,7 +8,7 @@ import time
 from face_layout import pygame
 from neuralintents.assistants import BasicAssistant
 from Custom_assistant import CustomAssistant
-
+from face_detection import FaceDetection
 import queue 
 
 
@@ -20,7 +20,7 @@ class Assistant:
       self.speaker  = tts.init()#driverName= 'espeak')
       #self.fc = Face()
       #self.set_voice()
-      self.speaker.setProperty('voice', 'mb/mb-fr1')
+      self.speaker.setProperty('voice', 'mb/mb-fr4')
       self.speaker.setProperty('rate', 100)  # Set the speech rate
 
 
@@ -131,16 +131,19 @@ class Assistant:
 
    def main(self):
         pygame.init()
-        #screen = pygame.display.set_mode((0,0) , pygame.FULLSCREEN)  
-        screen = pygame.display.set_mode((400,400))  
+        screen = pygame.display.set_mode((0,0) , pygame.FULLSCREEN)  
+        w = screen.get_width() 
+        #screen = pygame.display.set_mode((400,400))  
         tts_thread = threading.Thread(target=self.speak_worker, daemon=True )
         assistant_thread = threading.Thread(target=self.run)
- 
+        inn_scr = pygame.Surface([200,200])
+
+        Detect  = FaceDetection(inn_scr, [200,200] )  
         fc_lay = Face(screen )
         run = True
-        is_talking = False
         assistant_thread.start()
         tts_thread.start() 
+        Detect.inner_screen_thread.start() 
         while run:
             for event in pygame.event.get():
                 if event.type == pygame.QUIT:
@@ -150,9 +153,12 @@ class Assistant:
                #self.clock.tick(0.3)
             else :
                 fc_lay.draw_face(act="neutral",expression="talk", eyes_open=True, look_direction="center",mouth_open=True)
+            with Detect.lock: 
+                screen.blit(inn_scr ,( w-200,0) )
             pygame.display.flip()    
         self.tts_queue.put(None)
         tts_thread.join()
+        Detect.inner_screen_thread.join()
         assistant_thread.join()
         pygame.quit()
 
