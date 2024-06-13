@@ -12,4 +12,24 @@ to test it in the commandline just run
 
 the -s specifies the speed 
 
+## neuralintents on pi 
+you need to install this deps first 
+
+sudo apt install libhdf5-dev 
+
+to insatll it in a venv ( recommended) 
+
+python3 -m venv venv 
+pip3 install neuralintents 
+
+globally 
+pip3 install neuralintents --break-system-packages 
+
+if this didn't work 
+clone the repo of neural intents 
+cd neuralintents
+pip3 install . 
+
+
+
 

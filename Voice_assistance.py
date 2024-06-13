@@ -7,7 +7,7 @@ from face_layout import Face
 import time 
 from face_layout import pygame
 from neuralintents.assistants import BasicAssistant
-from neural_intents_exmaple import CustomAssistant
+from Custom_assistant import CustomAssistant
 
 import queue 
 
@@ -21,7 +21,7 @@ class Assistant:
       #self.fc = Face()
       #self.set_voice()
       self.speaker.setProperty('voice', 'mb/mb-fr1')
-      self.speaker.setProperty('rate', 155)  # Set the speech rate
+      self.speaker.setProperty('rate', 100)  # Set the speech rate
 
 
       #self.speaker.setProperty("rate",150) 
@@ -131,11 +131,12 @@ class Assistant:
 
    def main(self):
         pygame.init()
-    
+        #screen = pygame.display.set_mode((0,0) , pygame.FULLSCREEN)  
+        screen = pygame.display.set_mode((400,400))  
         tts_thread = threading.Thread(target=self.speak_worker, daemon=True )
         assistant_thread = threading.Thread(target=self.run)
  
-        fc_lay = Face()
+        fc_lay = Face(screen )
         run = True
         is_talking = False
         assistant_thread.start()
@@ -149,6 +150,7 @@ class Assistant:
                #self.clock.tick(0.3)
             else :
                 fc_lay.draw_face(act="neutral",expression="talk", eyes_open=True, look_direction="center",mouth_open=True)
+            pygame.display.flip()    
         self.tts_queue.put(None)
         tts_thread.join()
         assistant_thread.join()

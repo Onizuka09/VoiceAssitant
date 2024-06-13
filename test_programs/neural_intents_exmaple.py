@@ -2,14 +2,15 @@ import random
 import numpy as np
 import nltk
 from neuralintents.assistants import BasicAssistant
-
 class CustomAssistant(BasicAssistant):
     def __init__(self, intents_file, confidence_threshold=0.6):
         super().__init__(intents_file)
         self.confidence_threshold = confidence_threshold
         self.context = None  # Initialize context
 
-    def _predict_intent(self, input_text: str):
+
+
+    def _predict_intent(self, input_text):
         input_words = nltk.word_tokenize(input_text)
         input_words = [self.lemmatizer.lemmatize(w.lower()) for w in input_words]
 
@@ -23,17 +24,15 @@ class CustomAssistant(BasicAssistant):
         input_bag_of_words = np.array([input_bag_of_words])
 
         predictions = self.model.predict(input_bag_of_words, verbose=0)[0]
+        #predicted_intent = self.intents[np.argmax(predictions)]
+
         max_prob = np.max(predictions)
-
-        #print( self.intents(np.argmax(predictions)),max_prob)
-        index  = np.argmax(predictions) 
-        intent = self.intents_data["intents"][index]["tag"]
-        print(intent,  max_prob) 
+        print(max_prob)
         if max_prob < self.confidence_threshold:
-            return None
+             return None
         predicted_intent = self.intents[np.argmax(predictions)]
-        return predicted_intent
 
+        return predicted_intent
     def process_input(self, input_text: str):
         predicted_intent = self._predict_intent(input_text)
 
@@ -114,7 +113,7 @@ class CustomAssistant(BasicAssistant):
 
 if __name__ == '__main__':
 # Usage example
-    assistant = CustomAssistant('intents.json')
+    assistant = CustomAssistant('test_intents.json')
     assistant.fit_model(epochs=50)
     assistant.save_model()
     done = False

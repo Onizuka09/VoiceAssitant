@@ -6,7 +6,7 @@ This project represents a Voice assistant that talks about tunisia, created with
 
 ## setup - linux 
 
-Install espeak 
+Install sudo apt insatll  espeak 
 
 Install new voices :
 
