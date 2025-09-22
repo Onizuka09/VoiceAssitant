@@ -2,108 +2,81 @@
   "intents": [
     {
       "tag": "greeting",
-      "patterns": ["Hi", "Hello", "Hey"],
-      "responses": ["Hello!", "Hi there! How can I help you today?"],
+      "patterns": ["Hi", "Hello", "Hey Freeways"],
+      "responses": ["Hello! Welcome to FreeWays ISI.", "Hi there! Are you interested in free software and open source?"],
       "context_set": "greeting"
     },
     {
-      "tag": "tunisia_location",
-      "patterns": ["Where is Tunisia located?", "What is the location of Tunisia?", "In which country is Tunisia?"],
+      "tag": "freeways_location",
+      "patterns": ["Where is Freeways ISI located?", "What is the location of Freeways ISI?", "Where can I find Freeways ISI?"],
       "responses": [
-        "Tunisia is located in North Africa, bordered by Algeria to the west, Libya to the southeast, and the Mediterranean Sea to the north and east.",
-        "Tunisia is situated on the northernmost tip of Africa, with a coastline along the Mediterranean Sea."
+        "FreeWays ISI is based at ISI Ariana (Institut Supérieur d’Informatique), Tunisia.",
+        "You can find FreeWays ISI at the Higher Institute of Computer Science (ISI) in Ariana, Tunisia."
       ],
-      "context_set": "asked_about_tunisia"
+      "context_set": "asked_about_freeways"
     },
     {
-      "tag": "ask_about_tunisia",
-      "patterns": ["Tell me about Tunisia", "What is Tunisia like?", "Can you tell me about Tunisian culture?"],
+      "tag": "ask_about_freeways",
+      "patterns": ["Tell me about Freeways ISI", "What is Freeways ISI?", "Can you tell me about the Freeways club?"],
       "responses": [
-        "Tunisia is known for its rich history, beautiful beaches, and diverse culture.",
-        "Tunisian culture is a blend of Arab, Berber, French, and Ottoman influences."
+        "FreeWays ISI is a student club at ISI Ariana that promotes the use of free and open source software.",
+        "The FreeWays club’s mission is to spread awareness about free software, support open source contributions, and help students, discover open source solutions."
       ],
-      "context_set": "asked_about_tunisia"
+      "context_set": "asked_about_freeways"
     },
     {
-      "tag": "tunisian_food",
-      "patterns": ["What is Tunisian food like?", "Tell me about Tunisian cuisine", "What do people eat in Tunisia?"],
+      "tag": "freeways_activities",
+      "patterns": ["What does Freeways ISI do?", "What activities does Freeways organize?", "What kind of events are held by Freeways ISI?"],
       "responses": [
-        "Tunisian cuisine is famous for dishes like couscous, brik, and harissa.",
-        "Popular Tunisian dishes include shakshouka, merguez sausage, and lablabi."
+        "Freeways has three technical departements which are Robotics departement, problem solving departement, high level programming departement, also we have three non technical departement, HR departement, finance departement and marketing departement, this year we also created a new departement junior departement, which departement do you want to learn about", 
+        "FreeWays organizes events such as open days, workshops, and seminars about free software and open source development.",
+        "The club hosts technical sessions, collaborative projects, and sometimes partners with other clubs (like IEEE ISI) for events such as robotics competitions."
       ],
-      "context_filter": "asked_about_tunisia",
-      "context_set": "tunisian_food"
+      "context_filter": "asked_about_freeways",
+      "context_set": "freeways_activities"
     },
     {
-      "tag": "tunisian_music",
-      "patterns": ["Tell me about Tunisian music", "What music is popular in Tunisia?", "What kind of music do Tunisians listen to?"],
+      "tag": "freeways_projects",
+      "patterns": ["Tell me about Freeways projects", "What projects does Freeways ISI work on?", "Does Freeways have student projects?"],
       "responses": [
-        "Tunisian music includes genres like Malouf, which has Andalusian roots.",
-        "Popular music in Tunisia also includes modern pop and rai."
+        "FreeWays members work on projects like Linux system customization, embedded systems with free software, and developing web tools for the community.",
+        "The club encourages students to build open source projects, contribute to existing ones, and collaborate on innovative ideas."
       ],
-      "context_filter": "asked_about_tunisia",
-      "context_set":"tunisian_music"
+      "context_filter": "asked_about_freeways",
+      "context_set": "freeways_projects"
     },
     {
-      "tag": "tunisian_festivals",
-      "patterns": ["Are there any festivals in Tunisia?", "Tell me about Tunisian festivals", "What festivals do Tunisians celebrate?"],
+      "tag": "freeways_partners",
+      "patterns": ["Does Freeways collaborate with other clubs?", "Who does Freeways work with?", "Does Freeways partner with other organizations?"],
       "responses": [
-        "Popular festivals in Tunisia include the Carthage International Festival and the Sahara Festival in Douz.",
-        "Tunisians also celebrate traditional holidays like Eid al-Fitr and Eid al-Adha."
+        "Yes, FreeWays often collaborates with other ISI clubs like IEEE ISI, Enactus ISI, and Geeks ISI for joint events.",
+        "The club also connects with the broader Tunisian free software community to promote open source culture."
       ],
-      "context_filter": "asked_about_tunisia",
-      "context_set":"tunisian_festivals"
+      "context_filter": "asked_about_freeways",
+      "context_set": "freeways_partners"
     },
     {
-      "tag": "follow_up_food",
-      "patterns": ["Tell me more about Tunisian dishes", "What are some traditional Tunisian foods?"],
+      "tag": "freeways_join",
+      "patterns": ["How can I join Freeways?", "Can I become a member of Freeways ISI?", "How do I register in Freeways ISI?"],
       "responses": [
-        "In addition to couscous and brik, Tunisian cuisine features specialties like tagine, kefteji, and makroud.",
-        "Don't miss trying Tunisian street food like fricassée and maqluba during your visit!"
+        "You can join FreeWays ISI by contacting the club during recruitment periods at ISI Ariana.",
+        "Membership is open to ISI students who are passionate about free software, open source, and community collaboration."
       ],
-      "context_filter": "tunisian_food",
-      "context_set":"asked_about_tunisia"
-    },
-    {
-      "tag": "follow_up_music",
-      "patterns": ["Tell me more about Tunisian music", "Can you recommend some Tunisian music artists?", "What are popular Tunisian songs?"],
-      "responses": [
-        "Some renowned Tunisian music artists include Emel Mathlouthi, Saber Rebaï, and Lotfi Bouchnak.",
-        "Popular Tunisian songs include 'Kelmti Horra' by Emel Mathlouthi and 'Sidi Mansour' by Saber Rebaï."
-      ],
-      "context_filter": "tunisian_music",
-      "context_set":"asked_about_tunisia"
-    },
-    {
-      "tag": "follow_up_festivals",
-      "patterns": ["tell me more about tunisian festivals", "What are the dates for the Carthage International Festival?", "Can you provide more details about the Sahara Festival in Douz?"],
-      "responses": [
-        "The Carthage International Festival usually takes place in July and August, featuring a variety of music, theater, and dance performances.",
-        "The Sahara Festival in Douz is a cultural celebration of Bedouin traditions and desert heritage, held annually in December."
-      ],
-      "context_filter": "tunisian_festivals",
-    "context_set":"asked_about_tunisia"
+      "context_set": "freeways_join"
     },
     {
       "tag": "switch_topic",
-      "patterns": ["Tell me something else", "I'm curious about something else", "what else"],
-      "responses": ["Sure! What are you intrested in ?"],
+      "patterns": ["Tell me something else", "I'm curious about something else", "What else"],
+      "responses": ["Sure! Do you want to know about FreeWays projects, events, or how to join?"],
       "context_set": ""
     },
     {
       "tag": "default_response",
       "patterns": [],
-      "responses": ["I don't understand. Can you please rephrase?"],
+      "responses": ["I don’t understand. Could you please rephrase your question about FreeWays ISI?"],
       "context_set": "out_of_context"
-    },
-    {
-      "tag": "follow_up_food_ingredients",
-      "patterns": ["What are the main ingredients used in Tunisian dishes?", "Can you tell me more about Tunisian spices?"],
-      "responses": ["Tunisian cuisine often incorporates ingredients like olive oil, cumin, coriander, and harissa.",
-                    "Spices like cinnamon, saffron, and mint are commonly used in Tunisian cooking."],
-      "context_filter": "tunisian_food",
-      "context_set":"asked_about_tunisia"
     }
   ]
 }
+
 

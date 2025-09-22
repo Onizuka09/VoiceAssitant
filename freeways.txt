@@ -1,0 +1,101 @@
+FreeWays ISI — Knowledge Base
+
+FreeWays ISI is a student club at the Institut Supérieur d’Informatique (ISI), Ariana, Tunisia.
+Its mission is to promote free and open-source software, encourage collaboration, and develop students’ skills in both technical and non-technical fields.
+
+The club is organized into several departments:
+
+🔹 Technical Departments
+1. Robotics Department
+
+Focus: Robotics, embedded systems, and hardware projects.
+
+Activities:
+- Workshops on Arduino and ESP32 development.
+- Training in robotics and embedded programming.
+- Organizes ISI Robots competition and other contests.
+
+Achievements:
+- 🥇 First place in ECPC Embedded Competitive Programming.
+- 🥈 Second place in Innospeed Hackathon.
+
+Outreach: A mission to teach robotics to kids at a remote school in Mornag.
+
+2. High-Level Programming Department
+
+Focus: Advanced programming topics and modern technologies.
+
+Activities:
+- Workshops on Web Development, Mobile Development, AI & Machine Learning, and DevOps.
+- Project-based learning to encourage innovation.
+
+3. Problem-Solving Department
+
+Focus: Algorithmic thinking and competitive programming.
+
+Activities:
+- Workshops on problem solving with C++, Dynamic Programming (DP), and other key algorithms.
+- Contest preparation for TCPC, ACPC, and ICPC.
+- Organizes ISI Local Contest and ISI Programming Contest.
+
+Achievements:
+- 🏆 Champions of TCPC.
+- Qualified to participate in ACPC and ICPC.
+
+🔹 Non-Technical Departments
+4. Human Resources Department (HR)
+
+Focus: Team building, member management, and event organization.
+
+Activities:
+- Helps coordinate workshops and contests.
+- Provides support for recruiting and managing members.
+
+5. Marketing Department
+
+Focus: Visibility, branding, and communication.
+
+Activities:
+- Designs posters, flyers, and media content.
+- Promotes the club on social media platforms.
+- Enhances the club’s public image.
+
+6. Finance Department
+
+Focus: Financial sustainability and sponsorship.
+
+Activities:
+- Seeks sponsorships for events and competitions.
+- Manages the club’s budget and resources.
+
+7. Junior Department
+
+Focus: Introducing younger students to technology.
+
+Activities:
+- Teaches kids basic programming and tech skills.
+- Organizes small beginner-friendly workshops.
+
+🔹 Collaboration
+
+FreeWays often collaborates with other ISI clubs such as IEEE ISI, Enactus ISI, and Geeks ISI.
+It also connects with the Tunisian free software community to promote open-source culture.
+
+🔹 Membership
+
+Membership is open during recruitment periods at ISI Ariana.
+Students passionate about free software, open-source development, problem solving, robotics, or tech in general are encouraged to join.
+
+🔹 About Free Software
+
+Free software refers to programs that respect the freedom of users to run, study, modify, and share them. 
+It is defined by four essential freedoms:
+
+1. Freedom to run the program for any purpose.
+2. Freedom to study how the program works and adapt it to your needs (requires access to source code).
+3. Freedom to redistribute copies to help others.
+4. Freedom to improve the program and release your improvements to the public.
+
+The philosophy behind free software is not only about cost (free of charge) but mainly about **freedom**. 
+It allows communities like FreeWays ISI to learn, collaborate, and build technology together while sharing knowledge openly.
+

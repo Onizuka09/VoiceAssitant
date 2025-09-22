@@ -269,7 +269,8 @@ class Face:
 
 if __name__ == '__main__':
     pygame.init()
-    screen = pygame.display.set_mode( (0,0) , pygame.FULLSCREEN)
+    screen = pygame.display.set_mode( (0,0) , (480,480) )
+    #pygame.FULLSCREEN)
     #screen = pygame.display.set_mode((400,400))     
     f= Face(screen )
     f.test2()

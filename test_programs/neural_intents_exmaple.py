@@ -2,13 +2,42 @@ import random
 import numpy as np
 import nltk
 from neuralintents.assistants import BasicAssistant
+from tensorflow.keras.models import Sequential, load_model
+from tensorflow.keras.layers import Dense, Dropout, InputLayer
+from tensorflow.keras.optimizers import Adam, Optimizer
+
 class CustomAssistant(BasicAssistant):
     def __init__(self, intents_file, confidence_threshold=0.6):
         super().__init__(intents_file)
         self.confidence_threshold = confidence_threshold
         self.context = None  # Initialize context
 
+    def fit_model(self, optimizer: Optimizer = None, epochs=200):
+        X, y = self._prepare_intents_data()
+        
+        # Reshape X to 3D for RNN/LSTM compatibility
+        
+        if self.hidden_layers is None:
+            self.model = Sequential()
+            self.model.add(InputLayer(input_shape=(1, X.shape[1])))  # Changed to (1, features)
+            self.model.add(Dense(128, activation='relu'))
+            self.model.add(Dropout(0.5))
+            self.model.add(Dense(64, activation='relu'))
+            self.model.add(Dropout(0.5))
+            self.model.add(Dense(y.shape[1], activation='softmax'))
+        else:
+            self.model = Sequential()
+            self.model.add(InputLayer(input_shape=(1, X.shape[2])))  # Changed to (1, features)
+            for layer in self.hidden_layers:
+                self.model.add(layer)
+            self.model.add(Dense(y.shape[1], activation='softmax'))
 
+        if optimizer is None:
+            optimizer = Adam(learning_rate=0.01)
+
+        self.model.compile(loss="categorical_crossentropy", optimizer=optimizer, metrics=["accuracy"])
+
+        self.history = self.model.fit(X, y, epochs=epochs, batch_size=5, verbose=1)
 
     def _predict_intent(self, input_text):
         input_words = nltk.word_tokenize(input_text)
@@ -113,7 +142,7 @@ class CustomAssistant(BasicAssistant):
 
 if __name__ == '__main__':
 # Usage example
-    assistant = CustomAssistant('test_intents.json')
+    assistant = CustomAssistant('intents_en.json')
     assistant.fit_model(epochs=50)
     assistant.save_model()
     done = False

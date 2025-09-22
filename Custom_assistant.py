@@ -7,6 +7,8 @@ import pickle
 from tensorflow.keras.models import Sequential, load_model
 from tensorflow.keras.layers import Dense, Dropout, InputLayer
 from tensorflow.keras.optimizers import Adam, Optimizer
+from tensorflow.keras.optimizers import Adam, Optimizer
+from tensorflow.keras.preprocessing.sequence import pad_sequences
 from neuralintents.assistants import BasicAssistant
 
 class CustomAssistant(BasicAssistant):
@@ -35,10 +37,11 @@ class CustomAssistant(BasicAssistant):
             return None
         predicted_intent = self.intents[np.argmax(predictions)]
         return predicted_intent
+    
 
     def fit_model(self, optimizer: Optimizer = None, epochs=200):
-        X, y = self._prepare_intents_data()
 
+        X, y = self._prepare_intents_data()
         if self.hidden_layers is None:
             self.model = Sequential()
             self.model.add(InputLayer(input_shape=(X.shape[1],)))
@@ -119,7 +122,7 @@ class CustomAssistant(BasicAssistant):
 
 if __name__ == '__main__':
 # Usage example
-    assistant = CustomAssistant('test_intents.json')
+    assistant = CustomAssistant('intents_en.json')
     assistant.fit_model(epochs=50)
     assistant.save_model()
     done = False

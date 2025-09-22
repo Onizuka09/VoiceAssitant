@@ -20,7 +20,7 @@ class Assistant:
       self.speaker  = tts.init()#driverName= 'espeak')
       #self.fc = Face()
       #self.set_voice()
-      self.speaker.setProperty('voice', 'mb/mb-fr4')
+      self.speaker.setProperty('voice', 'english')
       self.speaker.setProperty('rate', 100)  # Set the speech rate
 
 
@@ -31,7 +31,7 @@ class Assistant:
       self.tts_queue = queue.Queue()
       #self.engine = tts.init(driverName='espeak')
       self.init_spkr()
-      self.assistant = CustomAssistant('./intents.json')
+      self.assistant = CustomAssistant('./intents_en.json')
 
       if os.path.exists('basic_model.keras'):
           self.assistant.load_model()
@@ -113,7 +113,7 @@ class Assistant:
                     recognizer.adjust_for_ambient_noise(source)
                     try:
                         audio = recognizer.listen(source, timeout=5, phrase_time_limit=10)
-                        result = recognizer.recognize_google(audio, language='fr-FR')
+                        result = recognizer.recognize_google(audio, language='en-USA')
                         print(f"result: {result}")
                         text = result.lower()
                         if text is not None:
@@ -131,7 +131,9 @@ class Assistant:
 
    def main(self):
         pygame.init()
-        screen = pygame.display.set_mode((0,0) , pygame.FULLSCREEN)  
+        # screen = pygame.display.set_mode((0,0) , pygame.FULLSCREEN)  
+        screen = pygame.display.set_mode( (400,400) )
+        #pygame.FULLSCREEN)
         w = screen.get_width() 
         #screen = pygame.display.set_mode((400,400))  
         tts_thread = threading.Thread(target=self.speak_worker, daemon=True )
