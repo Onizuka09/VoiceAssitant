@@ -9,3 +9,4 @@ sounddevice
 scipy
 pyttsx3
 gTTS
+google-genai

@@ -10,3 +10,6 @@ class Config:
         self.embedding_model = "sentence-transformers/all-MiniLM-L6-v2"
         self.data_file = "freeways.txt"
         self.faiss_index_file = "RAG/freeways.index"
+        self.gemini_api_key = os.getenv("GOOGLE_API_KEY")
+        self.gemini_model = "gemini-1.5-flash"
+        self.llm_provider = "gemini"  # or "mistral"

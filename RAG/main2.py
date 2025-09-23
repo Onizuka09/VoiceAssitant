@@ -11,6 +11,13 @@ from RAG.vectorstore import VectorDB
 from RAG.rag import RAG
 from gtts import gTTS
 
+import speech_recognition as sr
+import threading
+
+
+from piper.voice import PiperVoice
+import sounddevice as sd
+
 def record_audio(filename="user_voice.wav", duration=5, samplerate=16000):
     """Record audio from microphone and save it to a file."""
     print("\n🎤 Speak now...")
@@ -32,10 +39,51 @@ def transcribe_audio(filename):
 
 
 
-def speak_text(text):
-    tts = gTTS(text, lang="en")  # 'en' for English
-    tts.save("response.mp3")     # gTTS only saves mp3
-    os.system("mpg123 response.mp3")  # Or use 'aplay' if you have mp3 support
+voice = PiperVoice.load("en_US-amy-medium")  # Downloaded on first run
+
+def speak(text):
+    audio = voice.synthesize(text)
+    sd.play(audio, samplerate=voice.sample_rate)
+    sd.wait()
+
+
+
+recognizer_lock = threading.Lock()
+
+def speak(text):
+    print(text)
+
+def recognize_speech():
+    with recognizer_lock:
+        recognizer = sr.Recognizer()
+        with sr.Microphone() as source:
+            print("Écoute...")
+            recognizer.adjust_for_ambient_noise(source)  # Adjust for ambient noise
+            try:
+                audio = recognizer.listen(source, timeout=5, phrase_time_limit=10)
+                result = recognizer.recognize_google(audio, language='en-USA', show_all=True)
+                print(f"result: {result}")
+                if result and 'alternative' in result:
+                    text = result['alternative'][0]['transcript']
+                    print(f"L'utilisateur a dit: {text}")
+                    return text.lower()
+                else:
+
+                    speak("Désolé, je n'ai pas compris.")
+                    return ""
+            except sr.WaitTimeoutError:
+                speak("Temps écoulé sans entrée vocale.")
+                return ""
+            except sr.UnknownValueError:
+                speak("Désolé, je n'ai pas compris.")
+                return ""
+            except sr.RequestError:
+                speak("Désolé, le service de reconnaissance vocale est en panne.")
+                return ""
+            except Exception as e:
+                print(f"Exception: {e}")
+                speak("Une erreur est survenue lors de la reconnaissance vocale.")
+                return ""
 
 
 
@@ -62,8 +110,8 @@ if __name__ == "__main__":
             break
 
         if choice == "1":
-            audio_file = record_audio()
-            query = transcribe_audio(audio_file)
+            
+            query = recognize_speech()
 
         elif choice == "2":
             query = input("\nAsk Freeways chatbot: ")
