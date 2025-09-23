@@ -1,0 +1,11 @@
+faiss-cpu
+sentence-transformers
+mistralai
+numpy
+python-dotenv
+transformers
+torch
+sounddevice
+scipy
+pyttsx3
+gTTS
