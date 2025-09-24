@@ -15,8 +15,12 @@ import speech_recognition as sr
 import threading
 
 
+
 from piper.voice import PiperVoice
 import sounddevice as sd
+import requests
+
+
 
 def record_audio(filename="user_voice.wav", duration=5, samplerate=16000):
     """Record audio from microphone and save it to a file."""
@@ -38,15 +42,14 @@ def transcribe_audio(filename):
     return text
 
 
-
-voice = PiperVoice.load("en_US-amy-medium")  # Downloaded on first run
-
-def speak(text):
-    audio = voice.synthesize(text)
-    sd.play(audio, samplerate=voice.sample_rate)
-    sd.wait()
+#---------------------------------------------------------------------------------
 
 
+def speak_text(text):
+    tts = gTTS(text, lang="en")  # 'en' for English
+    tts.save("response.mp3")     # gTTS only saves mp3
+    os.system("mpg123 response.mp3")  # Or use 'aplay' if you have mp3 support
+#---------------------------------------------------------------------------------
 
 recognizer_lock = threading.Lock()
 
